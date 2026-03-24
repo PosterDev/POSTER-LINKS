@@ -1,79 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto PosterDev</title>
-    <style>
-        /* CSS: Aqui a gente cuida da beleza do site */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            transition: background 0.5s; /* Suaviza a troca de cor */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PosterDev</title>
 
-        .cartao {
-            background-color: #1e1e1e;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
-            width: 300px;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        h1 { color: #00ff88; }
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
 
-        button {
-            background-color: #00ff88;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+/* Container principal */
+.container {
+    display: flex;
+    height: 100vh;
+}
 
-        button:hover { background-color: #00cc6e; }
+/* Sidebar (menu lateral) */
+.sidebar {
+    width: 220px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
-        ul { list-style: none; padding: 0; }
+.sidebar h2 {
+    margin-bottom: 30px;
+    color: #00ff88;
+}
 
-        li { margin: 10px 0; }
+.sidebar button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 8px;
+}
 
-        a { color: #4db8ff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+.sidebar button:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Conteúdo */
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Cards */
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    animation: fade 0.4s;
+}
+
+/* Animação */
+@keyframes fade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 10px;
+    color: #4db8ff;
+}
+
+/* Responsivo (celular) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="cartao">
-        <h1>Olá,  Bem Vindo(a) ao meu Projeto! 👨‍💻</h1>
-        <p>Estou começando minha jornada para ser um  <strong>PROGRAMADOR</strong>. Acesse minhas redes através dos links, Obrigado.</p>
-        
-        <hr>
+<div class="container">
 
-        <ul>
-            <li><a href="https://github.com/PosterDev" target="_blank">Meu GitHub</a></li>
-            
-            <li><a href="https://www.linkedin.com/in/antonio-posteraro-78b787255" target="_blank">Meu LinkedIn</a></li>
-        </ul>
-
-        <button onclick="mudarCor()">Mudar a Cor</button>
+    <!-- Menu -->
+    <div class="sidebar">
+        <h2>PosterDev</h2>
+        <button onclick="trocarTela('home')">🏠 Home</button>
+        <button onclick="trocarTela('sobre')">👤 Sobre</button>
+        <button onclick="trocarTela('links')">🔗 Links</button>
     </div>
 
-    <script>
-        function mudarCor() {
-            const cores = ['#121212', '#1a237e', '#311b92', '#1b5e20', '#b71c1c'];
-            const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-            document.body.style.backgroundColor = corAleatoria;
-        }
-    </script>
+    <!-- Conteúdo -->
+    <div class="content">
+
+        <div id="home" class="card">
+            <h1>Bem-vindo(a) 👨‍💻</h1>
+            <p>Minha jornada como programador começa aqui. Espero que possa dar uma oportunidade de mostrar meu potencial.</p>
+        </div>
+<img src="c:\Users\Windows\Downloads\CURRICULUM.jpg" style="width:100px; border-radius:50%;">
+
+
+
+        <div id="sobre" class="card" style="display:none;">
+            <h1>Sobre mim</h1>
+            <p>Estou estudando programação e me atualizando todos os dias para trazer mais informação e aplicar em meu trabalho. Sou extremamente dedicado e proativo,sempre procurando resolver questões complexas com seriedade. Tive boas experiências em algumas áreas durante meu trajeto até aqui, onde escolhi trilhar este caminho e me aprofundar neste desafio que é o ramo de desenvolvimento de projetos.
+                Obrigado por visitar meu novo projeto/portifólio. </p>
+            </div>
+        </div>
+
+        <div id="links" class="card" style="display:none;">
+            <h1>Minhas redes</h1>
+            <a href="https://github.com/PosterDev" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function trocarTela(tela) {
+    document.querySelectorAll(".card").forEach(el => el.style.display = "none");
+    document.getElementById(tela).style.display = "block";
+}
+</script>
 
 </body>
 </html>
